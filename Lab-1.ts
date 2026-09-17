@@ -30,6 +30,8 @@ interface Listing {
       water: string,
       size: string,
     },
+    isSold?: boolean,
+    currentOwner?: string
 }
 
 
@@ -527,6 +529,8 @@ const listing0: Listing = listings[0];
  */
 //WRITE YOUR CODE BELOW
 
+const listing0Updated: Listing = {...listing0, isSold: false, currentOwner: "Jane Doe"};
+
 /**
  * NOTE: THIS TASK IS TRICKY!
  * Task-4:
@@ -543,7 +547,13 @@ const listing0: Listing = listings[0];
  * AND CHECK parseInt() to help changing quantifiable strings to numbers
  */
 //WRITE YOUR CODE BELOW
-parseInt((listings[2].price).replace("?", "").replace(",", "")) * 0.02
+
+function realtorFees(listing: Listing): number {
+  let price = parseInt((listing.price).replace("$", "").replace(",", ""))
+  return price <= 450000 ? price * 0.025 : price * 0.02;
+};
+
+console.log(realtorFees(listing0));
 /**
  * Task-5:
  * Sort the listing array ascendingly in a new variable called listingAscendingly
