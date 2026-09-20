@@ -553,13 +553,17 @@ function realtorFees(listing: Listing): number {
   return price <= 450000 ? price * 0.025 : price * 0.02;
 };
 
-console.log(realtorFees(listing0));
+//console.log(realtorFees(listing0));
+
 /**
  * Task-5:
  * Sort the listing array ascendingly in a new variable called listingAscendingly
  * according to their built year
  */
 //WRITE YOUR CODE BELOW
+
+const listingAscendingly = [...listings].sort((a,b) => parseInt(a.propertySummary.builtIn) - parseInt(b.propertySummary.builtIn));
+//console.log(listingAscendingly);
 
 /**
  * Task-6:
@@ -569,3 +573,6 @@ console.log(realtorFees(listing0));
  * This array should result in two listings only
  */
 //WRITE YOUR CODE BELOW
+
+const townhouseListings: Listing[] = listings.filter((house) => house.propertySummary.buildingType == "Townhouse");
+console.log(townhouseListings);
